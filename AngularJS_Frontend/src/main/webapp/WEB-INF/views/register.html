@@ -1,0 +1,24 @@
+<div ng-controller="registerController">
+<form name="registerationForm" ng-submit="submit(registerationForm)">
+<h1>User Registeration</h1>
+{{message}}
+<div>
+	<label>First Name</label><input type="text" name="user.firstName" placeholder="Enter first name" maxlength="20">
+</div>
+<div>
+	<label>Last Name</label><input type="text" name="user.lastName" placeholder="Enter last name" maxlength="20">
+</div>
+<div>
+	<label>Email</label><input type="text" name="user.email" placeholder="Enter email" maxlength="20">
+</div>
+<div>
+	<label>Password</label><input type="password" name="user.Password" placeholder="Enter password" maxlength="20">
+</div>
+<div>
+	<label>Re-enter Password</label><input type="password" name="" placeholder="Re-enter password" maxlength="20">
+</div>
+<div>
+	<input type="submit" name="submit" value="Submit"><input type="reset" name="reset" value="Reset">
+</div>
+</form>
+</div>

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<!-- <import resource="classpath:/wsprofiler-servlet.xml"/> -->
+	<context:component-scan base-package="com.searshc.mpuwebservice" />
+	<context:component-scan base-package="com.sears.dj.common.mpu" />
+		<context:component-scan base-package="com.searshc" />
+	
+	<context:annotation-config />
+	<task:annotation-driven executor="nposExecutor" scheduler="myScheduler"/>
+
+	<task:executor id="nposExecutor" pool-size="120" />
+	<task:executor id="miscExecutor" pool-size="200" />
+	<task:executor id="expiryExecutor" pool-size="50" />
+
+	<task:scheduler id="myScheduler" pool-size="10"/>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
+  <bean id="dj_mpu1" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/dj_mpu1" />
+		<property name="lookupOnStartup" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="cache" value="true" />
+	</bean>
+	
+	<bean id="dj_mpu2" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/dj_mpu2" />
+		<property name="lookupOnStartup" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="cache" value="true" />
+	</bean>
+	<bean id="dj_mpu3" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/dj_mpu3" />
+		<property name="lookupOnStartup" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="cache" value="true" />
+	</bean>
+	<bean id="dj_mpu4" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/dj_mpu4" />
+		<property name="lookupOnStartup" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="cache" value="true" />
+	</bean>
+	
+	<bean id="mcp_workflowDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/mcp_workflowDS" />
+		<property name="lookupOnStartup" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="cache" value="true" />
+	</bean>
+	
+	<!--  <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dj_mpu1">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://hfdvsbosysmysql1.vm.itg.corp.us.shldcorp.com:3372/dj_mpu1?zeroDateTimeBehavior=convertToNull" />
+		<property name="username" value="dejuser" />
+		<property name="password" value="chang3m3" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dj_mpu2">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://hfdvsbosysmysql1.vm.itg.corp.us.shldcorp.com:3372/dj_mpu2?zeroDateTimeBehavior=convertToNull" />
+		<property name="username" value="dejuser" />
+		<property name="password" value="chang3m3" />
+	</bean>
+	
+ 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="mcp_workflowDS">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://hfdvdjmpumysql1.vm.itg.corp.us.shldcorp.com:3372/mcp_workflow_dev?zeroDateTimeBehavior=convertToNull" />
+		<property name="username" value="mpuuser" />
+		<property name="password" value="MpU3uSeR9" />
+	</bean> -->
+	
+	<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" id="namedParameterJdbcTemplateWFD">
+		<constructor-arg ref="mcp_workflowDS" />
+	</bean>
+	
+	<!-- Defined by Puneet -->
+	
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplateRead">
+		<constructor-arg ref="dj_mpu1" />
+	</bean>
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplateUpdate">
+		<constructor-arg ref="dj_mpu1" />
+	</bean>
+	
+	<bean id="restTemplates" class="com.sears.util.web.client.RestTemplate">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
+					p:marshaller-ref="jaxbMarshaller" p:unmarshaller-ref="jaxbMarshaller" />
+				<bean
+					class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+				<bean id="jsonHttpMessageConverter"
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
+			<list>
+				<value>com.sears.mpu.backoffice.domain.ProductInfoResponse</value>
+				<value>com.sears.mpu.backoffice.domain.OrderAdaptorRequest</value>
+				<value>com.sears.mpu.backoffice.domain.OrderAdaptorResponse</value>
+				<value>com.searshc.mpuwebservice.domain.response.CheckoutResponse</value>
+			</list>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="searchContextAttributes" value="true" />
+		<property name="contextOverride" value="true" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath*:META-INF/spring/local/*.properties</value>
+				<value>file:/appl/mpu/data/MPUGlobalVariables.properties</value>
+				<!-- <value>classpath:wsprofiler.db.properties</value> -->
+				<value>classpath:mpu.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertiesImpl" class="com.sears.util.ExternalPropertyMapServiceImpl">
+		<constructor-arg
+			value="C:\\MPU\\MPUGlobalVariables.properties" />
+	</bean>
+	
+	<!-- Ended by Puneet -->
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplate1">
+		<constructor-arg ref="dj_mpu1" />
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplate2">
+		<constructor-arg ref="dj_mpu2" />
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplate3">
+		<constructor-arg ref="dj_mpu3" />
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplate4">
+		<constructor-arg ref="dj_mpu4" />
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplate5">
+		<constructor-arg ref="dj_mpu1" />
+	</bean>
+
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+		id="namedParameterJdbcTemplate6">
+		<constructor-arg ref="dj_mpu2" />
+	</bean>
+
+	<util:list id="namedParameterJdbcTemplates">
+		<ref bean="namedParameterJdbcTemplate1" />
+		<ref bean="namedParameterJdbcTemplate2" />
+		<ref bean="namedParameterJdbcTemplate3" />
+		<ref bean="namedParameterJdbcTemplate4" />
+		<ref bean="namedParameterJdbcTemplate5" />
+		<ref bean="namedParameterJdbcTemplate6" />
+	</util:list>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate1">
+		<constructor-arg ref="dj_mpu1" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate2">
+		<constructor-arg ref="dj_mpu2" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate3">
+		<constructor-arg ref="dj_mpu3" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate4">
+		<constructor-arg ref="dj_mpu4" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate5">
+		<constructor-arg ref="dj_mpu1" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate6">
+		<constructor-arg ref="dj_mpu2" />
+	</bean>
+
+	<util:list id="jdbcTemplates">
+		<ref bean="jdbcTemplate1" />
+		<ref bean="jdbcTemplate2" />
+		<ref bean="jdbcTemplate3" />
+		<ref bean="jdbcTemplate4" />
+		<ref bean="jdbcTemplate5" />
+		<ref bean="jdbcTemplate6" />
+	</util:list>
+
+
+
+	<bean id="jsonConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes" value="application/json;charset=UTF-8" />
+		
+	</bean>
+
+
+
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+		<property name="messageConverters">
+			<list>
+				
+				<ref bean="jsonConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="propertyUtils" class="com.searshc.mpuwebservice.util.PropertyUtils">
+		<property name="locations">
+			<list>
+			    <value>classpath:mpu_sql.properties</value>
+				<value>classpath:mpu.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	 
+                
+                
+      <bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheCacheManager">		
+		<property name="cacheManager" >
+			<ref bean="ehcache"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml" />
+    </bean>  
+	<bean id="connectionFactory1" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${hostname.update.1}</value>
+		</property>
+		<property name="port">
+			<value>${port.update.1}</value>
+		</property>
+		<property name="queueManager">
+			<value>${manager.update.1}</value>
+		</property>
+		<property name="channel">
+			<value>${channel.update.1}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="connectionFactory2" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${hostname.update.2}</value>
+		</property>
+		<property name="port">
+			<value>${port.update.2}</value>
+		</property>
+		<property name="queueManager">
+			<value>${manager.update.2}</value>
+		</property>
+		<property name="channel">
+			<value>${channel.update.2}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="jmsUpdateQueue" class="com.ibm.mq.jms.MQQueue">
+		<constructor-arg value="ECOM.SNC.HOLDANDGO.UPDATE.QC01" />
+	</bean>
+
+	<bean id="jmsTemplateUpdate1" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="connectionFactory1" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="jmsUpdateQueue" />
+		</property>
+		<property name="pubSubDomain">
+			<value>false</value>
+		</property>
+		<property name="receiveTimeout">
+			<value>20000</value>
+		</property>
+	</bean>
+
+	<bean id="jmsTemplateUpdate2" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="connectionFactory2" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="jmsUpdateQueue" />
+		</property>
+		<property name="pubSubDomain">
+			<value>false</value>
+		</property>
+		<property name="receiveTimeout">
+			<value>20000</value>
+		</property>
+	</bean>
+
+	<bean id="jmsMessageSender1" class="com.searshc.mpuhgservice.queueservice.JMSUpdateSender1">
+		<property name="jmsTemplateSender">
+			<ref bean="jmsTemplateUpdate1" />
+		</property>
+	</bean>
+
+	<bean id="jmsMessageSender2" class="com.searshc.mpuhgservice.queueservice.JMSUpdateSender2">
+		<property name="jmsTemplateSender">
+			<ref bean="jmsTemplateUpdate2" />
+		</property>
+	</bean>
+	
+
+
+<!-- Here the queue templates are for direct to MPU -->
+
+	<bean id="jmsResponseQueue" class="com.ibm.mq.jms.MQQueue">
+		<constructor-arg value="ECOM.MPUDIRECT.SNC.UPDATE.QC01" />
+	</bean>
+
+	<bean id="jmsTemplateResponse1" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="connectionFactory1" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="jmsResponseQueue" />
+		</property>
+		<property name="pubSubDomain">
+			<value>false</value>
+		</property>
+		<property name="receiveTimeout">
+			<value>20000</value>
+		</property>
+	</bean>
+
+	<bean id="jmsTemplateResponse2" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="connectionFactory2" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="jmsResponseQueue" />
+		</property>
+		<property name="pubSubDomain">
+			<value>false</value>
+		</property>
+		<property name="receiveTimeout">
+			<value>20000</value>
+		</property>
+	</bean>
+
+	<bean id="jmsDirectMessageSender1" class="com.searshc.mpuwebservice.queues.MPUWebServiceAckSender1">
+		<property name="jmsTemplateSender">
+			<ref bean="jmsTemplateResponse1" />
+		</property>
+	</bean>
+
+	<bean id="jmsDirectMessageSender2" class="com.searshc.mpuwebservice.queues.MPUWebServiceAckSender2">
+		<property name="jmsTemplateSender">
+			<ref bean="jmsTemplateResponse2" />
+		</property>
+	</bean>
+</beans>

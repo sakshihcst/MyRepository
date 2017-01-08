@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="INFO" />
+		<param name="File" value="/appl/mpu_qa2/jboss/log/mpuwebservices.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d  %-5p  %c %m %n" />
+		</layout>
+		<param name="MaxFileSize" value="10MB" />
+ 		<param name="MaxBackupIndex" value="10" />
+	</appender>
+<!-- 	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d  %-5p  [%c{1}] %m %n" />
+		</layout>
+	</appender> -->
+	
+	<appender name="wsfileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="INFO" />
+		<param name="File" value="${jboss.server.log.dir}/Services.log" />
+		<!--<param name="File" value="/appl/mpuDirect/jboss/log/mpuwebservices.log" />-->
+		<layout class="org.apache.log4j.PatternLayout">
+			 <param name="ConversionPattern" value="DT:%d{MM/dd/yyyy HH\:mm\:ss} LL:%5p hostname:${jboss.host.name} txnId:%X{txnId} storeId:%X{storeId} MSG:%m%n" />
+		</layout>
+		<param name="MaxFileSize" value="20MB" />
+		<param name="MaxBackupIndex" value="5" />
+	</appender>
+	
+	<logger name="wsprofilerLogger" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="wsfileAppender" />
+	</logger>
+	
+	<appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="500"/>
+		<appender-ref ref="fileAppender"/>
+		<!-- <appender-ref ref="consoleAppender"/> -->
+	</appender>
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="ASYNC" />
+	</root>
+</log4j:configuration>

@@ -1,0 +1,10 @@
+#db configuration for dabase dj_mpu1
+db.driver=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://10.21.79.40:3306/dj_mpu1?zeroDateTimeBehavior=convertToNull&generateSimpleParameterMetadata=true
+db.user=searsuser
+db.password=pass123
+#db configuration for dabase dj_mpu2
+db.driver1=com.mysql.jdbc.Driver
+db.url1=jdbc:mysql://10.21.79.40:3306/dj_mpu2?zeroDateTimeBehavior=convertToNull&generateSimpleParameterMetadata=true
+db.user1=searsuser
+db.password1=pass123

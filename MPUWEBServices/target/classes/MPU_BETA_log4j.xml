@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="ERROR" />
+		<param name="File" value="${log.logdir}/mpuwebservices.log" />
+		<!--<param name="File" value="/appl/mpuDirect/jboss/log/mpuwebservices.log" />-->
+		<layout class="org.apache.log4j.PatternLayout">
+			 <param name="ConversionPattern" value="DT:%d{MM/dd/yyyy HH\:mm\:ss} LL:%5p hostname:${jboss.host.name} txnId:%X{txnId} storeId:%X{storeId} CL:%c{1} MSG:%m%n" />
+		</layout>
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="15" />
+	</appender>
+	<!-- <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			 <param name="ConversionPattern" value="DT:%d{MM/dd/yyyy HH\:mm\:ss} LL:%5p hostname:${jboss.host.name} txnId:%X{txnId} CL:%c{1} MSG:%m%n" />
+		</layout>
+	</appender> -->
+	
+
+	
+	<appender name="gelfAppender" class="org.graylog2.log.GelfAppender">
+		<param name="Threshold" value="INFO" />
+		<!-- <param name="graylogHost" value="trprdjmpuapp14.vm.itg.corp.us.shldcorp.com" /> -->
+		<param name="graylogHost" value="157.241.12.56" />
+			
+		<param name="addExtendedInformation" value="true"/>
+		<param name="extractStacktrace" value="true"/>
+		<!-- <param name="additionalFields" value="{'storeProf': 'Store-Profiling'}" /> -->
+		<param name="additionalFields" value="{'txnId': 'txnId'}"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="DT:%d{MM/dd/yyyy HH:mm:ss} LL:%5p hostname:${jboss.host.name} txnId:%X{txnId} storeId:%X{storeId}  CL:%c MSG:%m %n" />
+		</layout>
+	</appender>
+	
+	<appender name="gelfAppenderForStore" class="org.graylog2.log.GelfAppender">
+		<param name="Threshold" value="INFO" />
+		<param name="graylogHost" value="157.241.12.56" />
+
+		<param name="addExtendedInformation" value="true" />
+		<param name="extractStacktrace" value="true" />
+
+		<param name="additionalFields" value="{'txnId': 'txnId'}" />
+		<param name="additionalFields" value="{'storeProf': 'Store-Profiling'}" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="DT:%d{MM/dd/yyyy HH:mm:ss} LL:%5p hostname:${jboss.host.name} txnId:%X{txnId} CL:%c MSG:%m %n" />
+		</layout>
+	</appender>
+	
+	<appender name="wsfileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="INFO" />
+		<param name="File" value="${log.logdir}/Store-Profiler.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			 <param name="ConversionPattern" value="DT:%d{MM/dd/yyyy HH\:mm\:ss} LL:%5p hostname:${jboss.host.name} txnId:%X{txnId}  MSG:%m%n" />
+		</layout>
+		<param name="MaxFileSize" value="20MB" />
+		<param name="MaxBackupIndex" value="5" />
+	</appender>
+	
+	<logger name="wsprofilerLogger" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="wsfileAppender" />
+		<appender-ref ref="gelfAppenderForStore" />
+	</logger>
+
+	<appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="500" />
+		<appender-ref ref="fileAppender" />
+	<!-- 	<appender-ref ref="consoleAppender" /> -->
+	</appender>
+	<root>
+		<priority value="ERROR" />
+		<appender-ref ref="ASYNC" />
+		<appender-ref ref="gelfAppender" />
+	</root>
+</log4j:configuration>

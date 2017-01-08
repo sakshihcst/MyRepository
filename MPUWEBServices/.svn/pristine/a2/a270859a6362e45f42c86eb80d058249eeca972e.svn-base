@@ -1,0 +1,282 @@
+storeCacheCleanInterval = 1800000
+escalation_time_minutes=60
+qa_default_store=00957
+qa_default_store_decrement=0957
+mpu.paymentTypes.giftcard=G
+mpu.paymentTypes.payPal=R
+cardTypeLength=19
+#For Coupon Printing
+storeType=1
+printExtendedAmountCouponFlag=Y
+wsprofiler.is.active=false
+WEB_URL=/MPUWEBServices/v1
+INITIALSERVERURL=http://hfqasbosysjbos1.vm.itg.corp.us.shldcorp.com:8480
+
+mpu.notdeliver.reasoncode.dejservice=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/appEvent/saveDEJAppEvent
+
+#DEV properties
+#dev.stocklocator_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/items
+#dev.store_service_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/stores
+#dev.stockIncrement_url=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/message/addItemsToLocation
+#dev.stockDecrement_url=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/message/removeItemsFromLocation
+#dev.PrintService_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/
+#dev.LdapUser_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/users/ldapID/
+#dev.LockerPrintService_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/lockerTicket/
+
+#dev.isLocker.targetURL=https://shcmerchpickup-dev.intra.searshc.com/mcp_web/mpuLocker/islockerEnabledForStore/
+#
+#dev.isUserActive.targetURL=https://shcmerchpickup-dev.intra.searshc.com/mcp_web/isUserActive
+
+#dev.modbase_url=https://shcmerchpickup-dev.intra.searshc.com/mcp_web/mod
+#dev.modbase_url=http://hfdvdjmpuapp1.vm.itg.corp.us.shldcorp.com:8180/mcp_web/mod
+#dev.hostname.update.1=hofdvmq1.searshc.com
+#dev.port.update.1=1415
+#dev.manager.update.1=SQAT0001
+#dev.channel.update.1=HAGOA.SVRCONN
+#
+#dev.hostname.update.2=hofdvmq2.searshc.com
+#dev.port.update.2=1415
+#dev.manager.update.2=SQAT9999
+#dev.channel.update.2=HAGOA.SVRCONN
+
+#QA properties
+SOAstockLocation=https://shchandheld-qa.intra.searshc.com
+ShopsearsAPIURL=http://bcapp404p.stag.ch4.s.com:8180
+#ShopsearsAPIURL=http://bcapp405p.stag.ch4.s.com:8180
+
+item_master_url=http://hfqasbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/items
+stocklocator_url=http://hfqasbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/items
+#store_service_url=http://hfqasbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/stores
+store_service_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/stores
+
+stockIncrement_url=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/message/addItemsToLocation
+stockDecrement_url=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/message/removeItemsFromLocation
+PrintService_url=http://hfqasbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/
+LdapUser_url=http://hfqasbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/users/ldapID/
+LockerPrintService_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/lockerTicket/
+
+isLocker.targetURL=https://shcmerchpickup-qa.intra.searshc.com/mcp_web/mpuLocker/islockerEnabledForStore/
+isUserActive.targetURL=https://shcmerchpickup-qa2.intra.searshc.com/mcp_web/isUserActive
+modbase_url=https://shcmerchpickup-qa2.intra.searshc.com/mcp_web/mod
+hostname.update.1=hofdvmq1.searshc.com
+port.update.1=1415
+manager.update.1=SQAT0001
+channel.update.1=HAGOA.SVRCONN
+
+hostname.update.2=hofdvmq2.searshc.com
+port.update.2=1415
+manager.update.2=SQAT9999
+channel.update.2=HAGOA.SVRCONN
+
+#STRESS properties
+#stress.stocklocator_url=http://trstsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/items
+#stress.store_service_url=http://trstsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/stores
+#stress.stockIncrement_url=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/message/addItemsToLocation
+#stress.stockDecrement_url=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/message/removeItemsFromLocation
+#stress.PrintService_url=http://trstsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/
+#stress.LdapUser_url=http://trstsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/users/ldapID/
+#stress.LockerPrintService_url=http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/lockerTicket/
+#
+#stress.isLocker.targetURL=https://shcmerchpickup-qa.intra.searshc.com/mcp_web/mpuLocker/islockerEnabledForStore/
+#stress.isUserActive.targetURL=https://shcmerchpickup-qa.intra.searshc.com/mcp_web/isUserActive
+#stress.modbase_url=http://hfqadjmpuapp1.vm.itg.corp.us.shldcorp.com:8280/mcp_web/mod
+#stress.hostname.update.1=hofdvmq1.searshc.com
+#stress.port.update.1=1415
+#stress.manager.update.1=SQAT0001
+#stress.channel.update.1=HAGOA.SVRCONN
+#
+#stress.hostname.update.2=hofdvmq2.searshc.com
+#stress.port.update.2=1415
+#stress.manager.update.2=SQAT9999
+#stress.channel.update.2=HAGOA.SVRCONN
+
+#BETA properties
+#beta.stocklocator_url=http://sbo-int.intra.searshc.com/DEJInterfaces/v2/items
+#beta.store_service_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/stores
+#beta.stockIncrement_url=https://shchandheld.intra.searshc.com/DEJServices/RestServices/message/addItemsToLocation
+#beta.stockDecrement_url=https://shchandheld.intra.searshc.com/DEJServices/RestServices/message/removeItemsFromLocation
+#beta.PrintService_url=http://sbo-int.intra.searshc.com/DEJInterfaces/v1/print/
+#
+#beta.isLocker.targetURL=https://mpuservices-beta.intra.searshc.com/mcp_web/mpuLocker/islockerEnabledForStore/
+#beta.isUserActive.targetURL=https://mpuservices-beta.intra.searshc.com/mcp_web/isUserActive
+#beta.modbase_url=https://mpuservices-beta.intra.searshc.com/mcp_web/mod
+#
+#beta.hostname.update.1=trprwmsmq01.intra.searshc.com
+#beta.port.update.1=1414
+#beta.manager.update.1=DICOMP3
+#beta.channel.update.1=HAGO.SVRCONN
+#
+#beta.hostname.update.2=trprwmsmq02.vm.itg.corp.us.shldcorp.com 
+#beta.port.update.2=1414
+#beta.manager.update.2=DICOMP4
+#beta.channel.update.2=HAGO.SVRCONN
+
+
+#Prod properties
+#prod.stocklocator_url=http://sbo-int.intra.searshc.com/DEJInterfaces/v2/items
+#prod.store_service_url=http://sbo-int.intra.searshc.com/DEJInterfaces/v2/stores
+#
+#prod.stockIncrement_url=https://shchandheld.intra.searshc.com/DEJServices/RestServices/message/addItemsToLocation
+#prod.stockDecrement_url=https://shchandheld.intra.searshc.com/DEJServices/RestServices/message/removeItemsFromLocation
+#
+#prod.isLocker.targetURL=https://shcmerchpickup.intra.searshc.com/mcp_web/mpuLocker/islockerEnabledForStore/
+#prod.isUserActive.targetURL=https://shcmerchpickup.intra.searshc.com/mcp_web/isUserActive
+#
+#prod.hostname.update.1=trprwmsmq01.intra.searshc.com
+#prod.port.update.1=1414
+#prod.manager.update.1=DICOMP3
+#prod.channel.update.1=HAGO.SVRCONN
+#
+#prod.hostname.update.2=trprwmsmq02.vm.itg.corp.us.shldcorp.com 
+#prod.port.update.2=1414
+#prod.manager.update.2=DICOMP4
+#prod.channel.update.2=HAGO.SVRCONN
+
+
+Sears.StoreFormat = SearsRetail
+Kmart.StoreFormat = KmartRetail
+#DNS For Printer 
+ticketing.printer.sears.dns=http://mais02.sm{0}.fls.sears.com:8080/mcp_order_adaptor
+ticketing.printer.kmart.dns=
+GetDSNForQA=Y
+ticketing.printer.sears.dns.0991=http://10.44.0.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1818=http://10.109.108.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1430=http://10.109.188.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1333=http://10.109.184.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.2990=http://10.44.0.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1104=http://10.109.112.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1148=http://10.109.120.11:8080/mcp_order_adaptor
+
+######## LOCKER STATUS ########
+locker.status.binned= BINNED
+########################### LOCKER PROPERTIES ########################################
+com.web.locker.workItemTransactionTypeCode=J,O,F
+com.mpu.web.orderStartswith=09300
+com.mpu.web.locker.divList=003,044,057,058
+com.mpu.web.locker.max.amount=75
+com.mpu.web.cardType=1,2,8,D,I,J,P
+
+##### timestamp used for user #############
+com.mpu.defaulttimestamp=2000-01-01 00:00:00
+
+###########################################
+
+############### Shopin Props ##################
+################ DEV ##########################
+#SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.qa.ch3.s.com/KanaRS/services/Sears-Services?wsdl
+################ QA ###########################
+SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.qa.ch3.s.com/KanaRS/services/Sears-Services?wsdl
+################ BETA #########################
+#SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.prod.ch4.s.com/KanaRS/services/Sears-Services
+###############################################
+#SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.prod.ch4.s.com/KanaRS/services/Sears-Services
+###############################################
+
+
+
+CHECK_VEHICLE_INFO_FLAG = true
+CHECK_ALL_VEHICLE_INFO_FLAG = false
+insert.shopin.report.url = https://shcmerchpickup-qa.intra.searshc.com/mcp_web/mpuReport/insertDataFromNonDejForPickUpReport
+update.shopin.report.url = https://shcmerchpickup-qa.intra.searshc.com/mcp_web/mpuReport/updateRecordForNonDejPickupReport
+#########################################################
+
+
+######### SHOPIN PUSH NOTIFICATION ##################
+#DEV:
+#MPU_DELIVER_STATUS_API_URL =http://findyourway-dev.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+#QA :
+MPU_DELIVER_STATUS_API_URL =http://findyourway-dev.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+#Beta :
+#MPU_DELIVER_STATUS_API_URL = http://findyourway.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+#PROD
+#MPU_DELIVER_STATUS_API_URL = http://findyourway.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+
+
+#################### TI SERVICE CONSTANTS ################
+ti.fm_channel.property.value = DDC
+ti.channel.HFM.property.value = HFM
+ti.max_member_offer_count.property.value = 1
+ti.channel.property.value = syw.com
+ti.max_offer_count.property.value = 3
+ti.client.property.value = mpu
+mpu.invalid.data.not.found=Data Not Found.
+mpu.webservice.success = MPUWEBServices deployed successfully.
+################################################################################
+##### Default SYWR email ids for TI
+################################################################################
+ti.non.sywr.member.email.id = MPUKioskTI@searshc.com
+ti.sywr.member.email.id =  
+
+
+################## TI ENVIRONMENT SPECIFIC ###########################
+
+########## QA #############################
+SBOServiceURL = http://hfdvsbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/items/
+TIServiceURL = http://sywr-qa1.qa.ch3.s.com/offersapi/r/v1/offers?
+saveTIOffersURL = http://sywr-qa1.qa.ch3.s.com/offersapi/r/v1/saved-offers
+############  BETA/PROD  #########################
+#SBOServiceURL = http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/items/
+#TIServiceURL = http://offersapivip.prod.ch3.s.com/offersapi/r/v1/offers?
+#saveTIOffersURL = http://offersapivip.prod.ch3.s.com/offersapi/r/v1/saved-offers
+##########################################################################
+################################################################################
+##### Payment type codes for TI
+################################################################################
+
+payment.type.code.0=SYWR Tender
+payment.type.code.1=Sears
+payment.type.code.2=Discover
+payment.type.code.3=Layaway 
+payment.type.code.4=COD
+payment.type.code.5=MCA
+payment.type.code.6=EP
+payment.type.code.7=MCP
+payment.type.code.8=Visa, MC
+payment.type.code.9=Cash
+
+payment.type.code.A=Check
+payment.type.code.B=Mail Bank Check
+payment.type.code.C=Gift Certificate
+payment.type.code.D=American Express
+payment.type.code.E=Western Auto Consumer
+payment.type.code.F=Western Auto Commercial
+payment.type.code.G=Gift Card - Consumer
+payment.type.code.H=Gift Card - Corporate
+payment.type.code.I=Sears MasterCard
+payment.type.code.J=TGI MasterCard
+payment.type.code.K=Travelers Check
+payment.type.code.L=Money Order
+payment.type.code.M=Mall Gift Certificate
+payment.type.code.N=Foreign Currency
+payment.type.code.O=Debit Card as Cash
+payment.type.code.P=Commercial One
+payment.type.code.Q=Manufacturer's Coupon
+payment.type.code.R=PayPal Sales/Returns
+payment.type.code.S=Food Stamps
+payment.type.code.T=EBillMe
+payment.type.code.U=Multi Channel Pymt
+payment.type.code.V=EBT Cash Card
+payment.type.code.W=Lease Plan
+payment.type.code.X=Reserved for "other" 
+payment.type.code.Y=FSA
+payment.type.code.Z=KPAS Associate Discount Tender
+
+# online Store List
+online.storeList=09300,09301,09306,09308,09311,09312,09321,09322,09372,09501,09911,09917
+=======
+
+############# Not Deliver Props ##################
+retrieve.mpu.notdeliver.reasoncode.dejservice = https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/mpuNotDeliver/getNotDeliverForCustomeDateAndStore
+
+NOT_DELIVER_APP_NAME=MPU
+NOT_DELIVER_DEJ_EVENT_TYPE=MPUNotDeliverReason
+PUBLISHER_DEVICE_NAME=SNC002
+mpu.notdeliver.reasoncode.dejservice=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/appEvent/saveDEJAppEvent
+#mpu.notdeliver.reasoncode.dejservice=https://shchandheld-beta.intra.searshc.com/DEJServices/RestServices/appEvent/saveDEJAppEvent
+#mpu.notdeliver.reasoncode.dejservice=https://shchandheld.intra.searshc.com/DEJServices/RestServices/appEvent/saveDEJAppEvent
+
+wsprofiler.interval=300000
+refresh.delay.property=300000
+#cron.schedule.property=0 0 0 * * *
+refresh.storemeta.property=28800000
+itemLevelResponse=true

@@ -1,0 +1,5 @@
+#globalVariables.propertyFileLocation=/appl/mpu/data/MPUGlobalVariables.properties
+globalVariables.propertyFileLocation=C:\\MPU\\MPUGlobalVariables.properties
+DailySchedulerInterval=0 0 5 * * *
+MemcacheSchedulerInterval=0/20 * * * * *
+

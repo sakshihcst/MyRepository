@@ -1,0 +1,118 @@
+env=NEW_BETA
+
+storeCacheCleanInterval = 1800000
+escalation_time_minutes=60
+qa_default_store=00957
+qa_default_store_decrement=0957
+mpu.paymentTypes.giftcard=G
+mpu.paymentTypes.payPal=R
+cardTypeLength=19
+#For Coupon Printing
+storeType=1
+printExtendedAmountCouponFlag=Y
+wsprofiler.is.active=true
+
+mpu.notdeliver.reasoncode.dejservice=https://shchandheld.intra.searshc.com/DEJServices/RestServices/appEvent/saveDEJAppEvent
+
+
+
+#BETA properties
+stockLocation=https://shchandheld.intra.searshc.com
+SOAstockLocation=https://hofddejweb2.intra.searshc.com:1943
+ShopsearsAPIURL=http://dbcvip.prod.ch4.s.com
+#ShopsearsAPIURL=http://bcapp405p.stag.ch4.s.com:8180
+
+item_master_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/items
+stocklocator_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/items
+store_service_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v2/stores
+stockIncrement_url=https://shchandheld.intra.searshc.com/DEJServices/RestServices/message/addItemsToLocation
+stockDecrement_url=https://shchandheld.intra.searshc.com/DEJServices/RestServices/message/removeItemsFromLocation
+PrintService_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/
+LdapUser_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/users/ldapID/
+LockerPrintService_url=http://trtssbointjbos1.vm.itg.corp.us.shldcorp.com:8180/DEJInterfaces/v1/print/lockerTicket/
+
+isLocker.targetURL=https://mpuservices-beta.intra.searshc.com/mcp_web/mpuLocker/islockerEnabledForStore/
+isUserActive.targetURL=https://mpuservices-beta.intra.searshc.com/mcp_web/isUserActive
+modbase_url=https://mpuservices-beta.intra.searshc.com/mcp_web/mod
+
+
+hostname.update.1=trprwmsmq01.intra.searshc.com
+port.update.1=1414
+manager.update.1=DICOMP3
+channel.update.1=HAGO.SVRCONN
+
+hostname.update.2=trprwmsmq02.vm.itg.corp.us.shldcorp.com 
+port.update.2=1414
+manager.update.2=DICOMP4
+channel.update.2=HAGO.SVRCONN
+MPU_STORE_PURCHASE_NOTIFICATION_API_URL = http://findyourway.searshc.com/dfdm/api/mpu/mpuInStorePurchaseNotice
+
+
+Sears.StoreFormat = SearsRetail
+Kmart.StoreFormat = KmartRetail
+#DNS For Printer 
+ticketing.printer.sears.dns=http://mais02.sm{0}.fls.sears.com:8080/mcp_order_adaptor
+ticketing.printer.kmart.dns=
+GetDSNForQA=Y
+ticketing.printer.sears.dns.0991=http://10.44.0.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1818=http://10.109.108.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1430=http://10.109.188.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.1333=http://10.109.184.11:8080/mcp_order_adaptor
+ticketing.printer.sears.dns.2990=http://10.44.0.11:8080/mcp_order_adaptor
+
+
+######## LOCKER STATUS ########
+locker.status.binned= BINNED
+########################### LOCKER PROPERTIES ########################################
+com.web.locker.workItemTransactionTypeCode=J,O,F
+com.mpu.web.orderStartswith=09300
+com.mpu.web.locker.divList=003,044,057,058
+com.mpu.web.locker.max.amount=75
+com.mpu.web.cardType=1,2,8,D,I,J,P
+
+##### timestamp used for user #############
+com.mpu.defaulttimestamp=2000-01-01 00:00:00
+
+###########################################
+
+
+
+######### SHOPIN PUSH NOTIFICATION ##################
+#DEV:
+#MPU_DELIVER_STATUS_API_URL =http://findyourway-dev.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+#QA :
+#MPU_DELIVER_STATUS_API_URL =http://findyourway-dev.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+#Beta :
+MPU_DELIVER_STATUS_API_URL = http://findyourway.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+#PROD
+#MPU_DELIVER_STATUS_API_URL = http://findyourway.searshc.com/dfdm/api/mpu/mpuDeliveryStatus
+
+
+############### Shopin Props ##################
+################ DEV ##########################
+#SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.qa.ch3.s.com/KanaRS/services/Sears-Services?wsdl
+################ QA ###########################
+#SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.qa.ch3.s.com/KanaRS/services/Sears-Services?wsdl
+################ BETA #########################
+SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.prod.ch4.s.com/KanaRS/services/Sears-Services
+###############################################
+#SHOPIN_URL_FOR_VEHICLE_INFO = http://oms.prod.ch4.s.com/KanaRS/services/Sears-Services
+###############################################
+CHECK_VEHICLE_INFO_FLAG = true
+CHECK_ALL_VEHICLE_INFO_FLAG = false
+insert.shopin.report.url = https://mpuservices-beta.intra.searshc.com/mcp_web/mpuReport/insertDataFromNonDejForPickUpReport
+update.shopin.report.url = https://mpuservices-beta.intra.searshc.com/mcp_web/mpuReport/updateRecordForNonDejPickupReport
+#########################################################
+
+############# Not Deliver Props ##################
+retrieve.mpu.notdeliver.reasoncode.dejservice = retrieve.mpu.notdeliver.reasoncode.dejservice=https://shchandheld-qa.intra.searshc.com/DEJServices/RestServices/mpuNotDeliver/getNotDeliverForCustomeDateAndStore
+
+NOT_DELIVER_APP_NAME=MPU
+NOT_DELIVER_DEJ_EVENT_TYPE=MPUNotDeliverReason
+PUBLISHER_DEVICE_NAME=SNC002
+mpu.notdeliver.reasoncode.dejservice=https://shchandheld.intra.searshc.com/DEJServices/RestServices/appEvent/saveDEJAppEvent
+
+wsprofiler.interval=300000
+#cron.schedule.property=0 0 0 * * *
+refresh.storemeta.property=28800000
+itemLevelResponse=true
